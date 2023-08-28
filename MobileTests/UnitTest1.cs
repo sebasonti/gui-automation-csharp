@@ -7,12 +7,14 @@ namespace MobileTests
         [SetUp]
         public void Setup()
         {
-            var driver = AndroidDriverBuilder.GetDriver();
         }
 
         [Test]
         public void Test1()
         {
+            var driver = AndroidDriverBuilder.GetDriver();
+            driver.CloseApp();
+            driver.Quit();
             Assert.Pass();
         }
     }

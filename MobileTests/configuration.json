@@ -1,0 +1,10 @@
+{
+  "settings": {
+    "platformName": "Android",
+    "appiumServer": "http://localhost:4723",
+  },
+  "aut": {
+    "appPackage": "org.isoron.uhabits",
+    "appActivity": ".MainActivity"
+  }
+}
