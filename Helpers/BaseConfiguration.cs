@@ -20,6 +20,7 @@ namespace Helpers
             }
         }
         public static string AppiumServer = ConfigurationHelper.GetString("settings", "appiumServer");
+        public static int ExplicitTimeout = ConfigurationHelper.GetInt("settings", "explicitTimeout");
         public static string AppPackage = ConfigurationHelper.GetString("aut", "appPackage");
         public static string AppActivity = ConfigurationHelper.GetString("aut", "appActivity");
     }

@@ -23,5 +23,10 @@ namespace Helpers
             }
             return Builder[$"{section}:{key}"];
         }
+
+        public static int GetInt(string section, string key)
+        {
+            return int.Parse(GetString(section, key));
+        }
     }
 }

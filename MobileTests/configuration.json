@@ -2,6 +2,7 @@
   "settings": {
     "platformName": "Android",
     "appiumServer": "http://localhost:4723",
+    "explicitTimeout": "30"
   },
   "aut": {
     "appPackage": "org.isoron.uhabits",
