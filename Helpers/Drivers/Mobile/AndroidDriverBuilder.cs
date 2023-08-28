@@ -7,13 +7,18 @@ namespace Helpers.Drivers.Mobile
     {
         public static AppiumDriver<AppiumWebElement> GetDriver()
         {
-            var driverOptions = new AppiumOptions();
-            driverOptions.AddAdditionalCapability("appium:platformName", BaseConfiguration.PlatformName);
-            driverOptions.AddAdditionalCapability("appium:appPackage", BaseConfiguration.AppPackage);
-            driverOptions.AddAdditionalCapability("appium:appActivity", BaseConfiguration.AppActivity);
-            driverOptions.AddAdditionalCapability("appium:automationName", "UiAutomator2");
+            return new AndroidDriver<AppiumWebElement>(new Uri(BaseConfiguration.AppiumServer), GetCapabilities());
+        }
 
-            return new AndroidDriver<AppiumWebElement>(new Uri(BaseConfiguration.AppiumServer), driverOptions);
+        private static AppiumOptions GetCapabilities()
+        {
+            var driverOptions = new AppiumOptions();
+            driverOptions.AddAdditionalCapability("platformName", BaseConfiguration.PlatformName);
+            driverOptions.AddAdditionalCapability("appPackage", BaseConfiguration.AppPackage);
+            driverOptions.AddAdditionalCapability("appActivity", BaseConfiguration.AppActivity);
+            driverOptions.AddAdditionalCapability("automationName", "UiAutomator2");
+
+            return driverOptions;
         }
     }
 }

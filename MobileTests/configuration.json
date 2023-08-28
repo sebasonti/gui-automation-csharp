@@ -2,10 +2,19 @@
   "settings": {
     "platformName": "Android",
     "appiumServer": "http://localhost:4723",
-    "explicitTimeout": "30"
+    "remoteAppiumServer": "https://hub-cloud.browserstack.com/wd/hub",
+    "explicitTimeout": "30",
+    "deviceName": "Google Pixel 7",
+    "platformVersion": "13.0",
+    "app": "",
+    "deviceCloudProvider": "Browserstack"
   },
   "aut": {
     "appPackage": "org.isoron.uhabits",
     "appActivity": ".MainActivity"
+  },
+  "browserstack": {
+    "user": "",
+    "accessKey": ""
   }
 }

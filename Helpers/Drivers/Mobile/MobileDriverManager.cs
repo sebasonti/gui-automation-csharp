@@ -3,7 +3,6 @@ using Helpers.Interfaces;
 using Helpers.UIElements;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Support.UI;
 
 namespace Helpers.Drivers.Mobile
@@ -14,14 +13,22 @@ namespace Helpers.Drivers.Mobile
 
         public MobileDriverManager()
         {
+            switch (BaseConfiguration.DeviceCloudProvider)
+            {
+                case DeviceCloudProvider.Browserstack:
+                    _driver = BrowserstackDriverBuilder.GetDriver();
+                    return;
+                default:
+                    break;
+            }
+
             switch (BaseConfiguration.PlatformName)
             {
                 case PlatformName.Android:
                     _driver = AndroidDriverBuilder.GetDriver();
-                    break;
+                    return;
                 case PlatformName.iOS:
                     throw new NotImplementedException();
-                case PlatformName.None:
                 default:
                     throw new NotSupportedException("Driver for given platform is not supported.");
             }

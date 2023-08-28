@@ -2,7 +2,6 @@
 {
     internal enum PlatformName
     {
-        None,
         Android,
         iOS
     }
