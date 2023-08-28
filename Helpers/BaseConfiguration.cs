@@ -1,8 +1,24 @@
-﻿namespace Helpers
+﻿using Helpers.Enums;
+
+namespace Helpers
 {
-    public static class BaseConfiguration
+    internal static class BaseConfiguration
     {
-        public static string PlatformName = ConfigurationHelper.GetString("settings", "platformName");
+        public static PlatformName PlatformName
+        {
+            get
+            {
+                string configuration = ConfigurationHelper.GetString("settings", "platformName");
+                bool supportedPlatform = Enum.TryParse(configuration, out PlatformName platformName);
+
+                if (supportedPlatform)
+                {
+                    return platformName;
+                }
+
+                return PlatformName.None;
+            }
+        }
         public static string AppiumServer = ConfigurationHelper.GetString("settings", "appiumServer");
         public static string AppPackage = ConfigurationHelper.GetString("aut", "appPackage");
         public static string AppActivity = ConfigurationHelper.GetString("aut", "appActivity");
