@@ -1,6 +1,6 @@
 ﻿namespace Helpers.Enums
 {
-    internal enum PlatformName
+    internal enum PlatformType
     {
         Android,
         iOS

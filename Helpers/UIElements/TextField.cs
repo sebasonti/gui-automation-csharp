@@ -9,7 +9,8 @@ namespace Helpers.UIElements
 
         public void SetText(string text)
         {
-            _element.SendKeys(text);
+            Element.SendKeys(text);
         }
+        string ITextField.Text => Element.Text;
     }
 }

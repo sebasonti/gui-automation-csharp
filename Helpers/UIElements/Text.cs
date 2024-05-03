@@ -7,6 +7,6 @@ namespace Helpers.UIElements
     {
         public Text(AppiumWebElement element) : base(element) { }
 
-        string IText.Text => _element.Text;
+        string IText.Text => Element.Text;
     }
 }

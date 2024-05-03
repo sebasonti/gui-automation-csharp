@@ -13,21 +13,24 @@ namespace Helpers.Drivers.Mobile
 
         public MobileDriverManager()
         {
-            switch (BaseConfiguration.DeviceCloudProvider)
+            if (BaseConfiguration.RemoteRun)
             {
-                case DeviceCloudProvider.Browserstack:
-                    _driver = BrowserstackDriverBuilder.GetDriver();
-                    return;
-                default:
-                    break;
+                switch (BaseConfiguration.DeviceCloudProvider)  
+                {
+                    case DeviceCloudProvider.Browserstack:
+                        _driver = BrowserstackDriverBuilder.GetDriver();
+                        return;
+                    case DeviceCloudProvider.None:
+                    default:
+                        throw new NotSupportedException("Device cloud provider is not supported.");
+                }
             }
-
             switch (BaseConfiguration.PlatformName)
             {
-                case PlatformName.Android:
+                case Enums.PlatformType.Android:
                     _driver = AndroidDriverBuilder.GetDriver();
                     return;
-                case PlatformName.iOS:
+                case Enums.PlatformType.iOS:
                     throw new NotImplementedException();
                 default:
                     throw new NotSupportedException("Driver for given platform is not supported.");
@@ -48,6 +51,7 @@ namespace Helpers.Drivers.Mobile
         public MobileElement GetElement(ElementType elementType, FindsBy findsBy, string locator)
         {
             AppiumWebElement appiumElement = FindElement(findsBy, locator);
+
             switch (elementType)
             {
                 case ElementType.Button:

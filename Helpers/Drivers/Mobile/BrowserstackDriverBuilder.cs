@@ -9,7 +9,7 @@ namespace Helpers.Drivers.Mobile
     {
         public static AppiumDriver<AppiumWebElement> GetDriver()
         {
-            if (BaseConfiguration.PlatformName == PlatformName.Android)
+            if (BaseConfiguration.PlatformName == PlatformType.Android)
             {
                 return new AndroidDriver<AppiumWebElement>(new Uri(BaseConfiguration.RemoteAppiumServer), GetCapabilities());
             }
@@ -27,7 +27,7 @@ namespace Helpers.Drivers.Mobile
             driverOptions.AddAdditionalCapability("browserstack.key", BaseConfiguration.BrowserstackAccessKey);
             driverOptions.AddAdditionalCapability("app", BaseConfiguration.App);
 
-            if (BaseConfiguration.PlatformName == PlatformName.Android)
+            if (BaseConfiguration.PlatformName == PlatformType.Android)
             {
                 driverOptions.AddAdditionalCapability("automationName", "UiAutomator2");
             }

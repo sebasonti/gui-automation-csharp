@@ -10,9 +10,9 @@ namespace Helpers.UIElements
 
         public void Click()
         {
-            if (_element.Displayed && _element.Enabled)
+            if (Element.Displayed && Element.Enabled)
             {
-                _element.Click();
+                Element.Click();
             }
             else
             {

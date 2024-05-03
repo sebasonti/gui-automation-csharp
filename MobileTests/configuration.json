@@ -3,11 +3,12 @@
     "platformName": "Android",
     "appiumServer": "http://localhost:4723",
     "remoteAppiumServer": "https://hub-cloud.browserstack.com/wd/hub",
-    "explicitTimeout": "30",
-    "deviceName": "Google Pixel 7",
-    "platformVersion": "13.0",
+    "explicitTimeout": 30,
+    "deviceName": "Google Pixel 8",
+    "platformVersion": "14.0",
     "app": "",
-    "deviceCloudProvider": "Browserstack"
+    "deviceCloudProvider": "Browserstack",
+    "remoteRun": false
   },
   "aut": {
     "appPackage": "org.isoron.uhabits",

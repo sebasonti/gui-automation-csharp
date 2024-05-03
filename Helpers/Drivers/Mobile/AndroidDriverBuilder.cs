@@ -14,9 +14,10 @@ namespace Helpers.Drivers.Mobile
         {
             var driverOptions = new AppiumOptions();
             driverOptions.AddAdditionalCapability("platformName", BaseConfiguration.PlatformName);
-            driverOptions.AddAdditionalCapability("appPackage", BaseConfiguration.AppPackage);
-            driverOptions.AddAdditionalCapability("appActivity", BaseConfiguration.AppActivity);
-            driverOptions.AddAdditionalCapability("automationName", "UiAutomator2");
+            driverOptions.AddAdditionalCapability("appium:appPackage", BaseConfiguration.AppPackage);
+            driverOptions.AddAdditionalCapability("appium:appActivity", BaseConfiguration.AppActivity);
+            //driverOptions.AddAdditionalCapability("appium:app", "<apk directory>");
+            driverOptions.AddAdditionalCapability("appium:automationName", "UiAutomator2");
 
             return driverOptions;
         }
