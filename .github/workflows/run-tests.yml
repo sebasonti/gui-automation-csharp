@@ -26,4 +26,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normals -e app=${{ env.APP }} -e user=${{ env.BS_USER }} -e accessKey=${{ env.BS_ACCESS_KEY }}
+      run: dotnet test --no-build -e app=${{ env.APP }} -e user=${{ env.BS_USER }} -e accessKey=${{ env.BS_ACCESS_KEY }}
