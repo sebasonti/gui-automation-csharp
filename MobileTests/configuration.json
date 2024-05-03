@@ -8,7 +8,7 @@
     "platformVersion": "14.0",
     "app": "",
     "deviceCloudProvider": "Browserstack",
-    "remoteRun": false
+    "remoteRun": true
   },
   "aut": {
     "appPackage": "org.isoron.uhabits",
