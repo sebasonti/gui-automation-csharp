@@ -1,0 +1,29 @@
+name: Run Mobile GUI Automated Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    env:
+      APP: ${{ secrets.APP }}
+      BS_USER: ${{ secrets.BS_USER }}
+      BS_ACCESS_KEY: ${{ secrets.BS_ACCESS_KEY }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normals -e app=${{ env.APP }} -e user=${{ env.BS_USER }} -e accessKey=${{ env.BS_ACCESS_KEY }}
