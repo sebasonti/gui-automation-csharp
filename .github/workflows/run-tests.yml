@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    environment: Testing
+    # environment: Testing
     env:
       APP: ${{ secrets.APP }}
       BS_USER: ${{ secrets.BS_USER }}
