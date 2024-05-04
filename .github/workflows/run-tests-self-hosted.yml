@@ -15,7 +15,8 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Test
-      run: dotnet test -e app=${{ env.APP }} -e user=${{ env.BS_USER }} -e accessKey=${{ env.BS_ACCESS_KEY }}
+      shell: cmd
+      run: dotnet test -e app=${{ env.APP }} -e user=${{ env.BS_USER }} -e accessKey=${{ env.BS_ACCESS_KEY }} -e remoteRun=false
     
     - uses: actions/upload-artifact@v4
       with:
