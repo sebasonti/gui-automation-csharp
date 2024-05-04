@@ -1,0 +1,1 @@
+{"c8b12238b6dac58361ec5ba4a8d287e8":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"471bed0a98d6d96d","reportUrl":"https://sebasonti.github.io/gui-automation-csharp/7//#testresult/471bed0a98d6d96d","status":"passed","time":{"start":1714843413791,"stop":1714843502469,"duration":88678}}]}}
