@@ -1,4 +1,4 @@
-name: Run Mobile GUI Automated Tests
+name: Run tests - self-hosted
 
 on: workflow_dispatch
 
@@ -14,14 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build
-      run: dotnet build --no-restore
-
     - name: Test
-      run: dotnet test --no-build -e app=${{ env.APP }} -e user=${{ env.BS_USER }} -e accessKey=${{ env.BS_ACCESS_KEY }}
+      run: dotnet test -e app=${{ env.APP }} -e user=${{ env.BS_USER }} -e accessKey=${{ env.BS_ACCESS_KEY }}
     
     - uses: actions/upload-artifact@v4
       with:
