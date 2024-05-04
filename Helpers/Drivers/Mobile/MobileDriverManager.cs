@@ -69,16 +69,23 @@ namespace Helpers.Drivers.Mobile
         {
             IWait<IWebDriver> wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(BaseConfiguration.ExplicitTimeout));
 
-            switch (findsBy)
+            try
             {
-                case FindsBy.XPath:
-                    return wait.Until(driver => _driver.FindElementByXPath(locator));
-                case FindsBy.Id:
-                    return wait.Until(driver => _driver.FindElementById(locator));
-                case FindsBy.AccesibilityId:
-                    return wait.Until(driver => _driver.FindElementByAccessibilityId(locator));
-                default:
-                    throw new NotSupportedException($"Locator type \"{findsBy}\" not supported");
+                switch (findsBy)
+                {
+                    case FindsBy.XPath:
+                        return wait.Until(driver => _driver.FindElementByXPath(locator));
+                    case FindsBy.Id:
+                        return wait.Until(driver => _driver.FindElementById(locator));
+                    case FindsBy.AccesibilityId:
+                        return wait.Until(driver => _driver.FindElementByAccessibilityId(locator));
+                    default:
+                        throw new NotSupportedException($"Locator type \"{findsBy}\" not supported");
+                }
+            }
+            catch (WebDriverTimeoutException ex)
+            {
+                throw new NoSuchElementException($"Element with locator {findsBy}: {locator} was not found.", ex);
             }
         }
     }
