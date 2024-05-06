@@ -30,7 +30,7 @@ namespace MobileTests
                 AllureApi.Step("Select Habit type: Yes or No", () =>
                 {
                     habitsView.AddHabit.Click();
-                    habitsView.SelectHabitType("Yes or No");
+                    habitsView.SelectHabitType("Yees or No");
                 }); 
 
                 var createHabitView = new CreateHabitView(_driver);
