@@ -4,6 +4,6 @@
     {
         XPath,
         Id,
-        AccesibilityId
+        ContentDescription
     }
 }

@@ -7,7 +7,7 @@ namespace MobileViews
     {
         public HabitsView(IDriverManager driver) : base(driver) { }
 
-        public IButton AddHabit => (IButton)_driver.GetElement(ElementType.Button, FindsBy.AccesibilityId, "Add habit");
+        public IButton AddHabit => (IButton)_driver.GetElement(ElementType.Button, FindsBy.ContentDescription, "Add habit");
         public IButton NewHabitName => (IButton)_driver.GetElement(
             ElementType.Button,
             FindsBy.XPath,

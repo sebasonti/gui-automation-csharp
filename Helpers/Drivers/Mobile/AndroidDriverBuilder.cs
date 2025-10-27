@@ -5,19 +5,18 @@ namespace Helpers.Drivers.Mobile
 {
     public static class AndroidDriverBuilder
     {
-        public static AppiumDriver<AppiumWebElement> GetDriver()
+        public static AppiumDriver GetDriver()
         {
-            return new AndroidDriver<AppiumWebElement>(new Uri(BaseConfiguration.AppiumServer), GetCapabilities());
+            return new AndroidDriver(new Uri(BaseConfiguration.AppiumServer), GetCapabilities());
         }
 
         private static AppiumOptions GetCapabilities()
         {
             var driverOptions = new AppiumOptions();
-            driverOptions.AddAdditionalCapability("platformName", BaseConfiguration.PlatformName);
-            driverOptions.AddAdditionalCapability("appium:appPackage", BaseConfiguration.AppPackage);
-            driverOptions.AddAdditionalCapability("appium:appActivity", BaseConfiguration.AppActivity);
-            //driverOptions.AddAdditionalCapability("appium:app", "<apk directory>");
-            driverOptions.AddAdditionalCapability("appium:automationName", "UiAutomator2");
+            driverOptions.PlatformName = BaseConfiguration.PlatformName.ToString();
+            driverOptions.AddAdditionalOption("appium:appPackage", BaseConfiguration.AppPackage);
+            driverOptions.AddAdditionalOption("appium:appActivity", BaseConfiguration.AppActivity);
+            driverOptions.AutomationName = "UiAutomator2";
 
             return driverOptions;
         }

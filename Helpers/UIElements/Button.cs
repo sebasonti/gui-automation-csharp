@@ -6,7 +6,7 @@ namespace Helpers.UIElements
 {
     public class Button : Text, IButton
     {
-        public Button(AppiumWebElement element) : base(element) { }
+        public Button(AppiumElement element) : base(element) { }
 
         public void Click()
         {

@@ -12,6 +12,7 @@ namespace MobileTests
     public class Tests
     {
         IDriverManager _driver;
+
         [SetUp]
         [AllureBefore("Start device and load app.")]
         public void Setup()
@@ -30,7 +31,7 @@ namespace MobileTests
                 AllureApi.Step("Select Habit type: Yes or No", () =>
                 {
                     habitsView.AddHabit.Click();
-                    habitsView.SelectHabitType("Yees or No");
+                    habitsView.SelectHabitType("Yes or No");
                 }); 
 
                 var createHabitView = new CreateHabitView(_driver);

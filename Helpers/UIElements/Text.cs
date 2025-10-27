@@ -5,7 +5,7 @@ namespace Helpers.UIElements
 {
     public class Text : MobileElement, IText
     {
-        public Text(AppiumWebElement element) : base(element) { }
+        public Text(AppiumElement element) : base(element) { }
 
         string IText.Text => Element.Text;
     }

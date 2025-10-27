@@ -9,7 +9,7 @@ namespace Helpers.Drivers.Mobile
 {
     public class MobileDriverManager : IDriverManager
     {
-        private AppiumDriver<AppiumWebElement> _driver;
+        private AppiumDriver _driver;
 
         public MobileDriverManager()
         {
@@ -39,7 +39,6 @@ namespace Helpers.Drivers.Mobile
 
         public void Close()
         {
-            _driver.CloseApp();
             _driver.Quit();
         }
 
@@ -50,7 +49,7 @@ namespace Helpers.Drivers.Mobile
 
         public MobileElement GetElement(ElementType elementType, FindsBy findsBy, string locator)
         {
-            AppiumWebElement appiumElement = FindElement(findsBy, locator);
+            AppiumElement appiumElement = FindElement(findsBy, locator);
 
             switch (elementType)
             {
@@ -65,23 +64,28 @@ namespace Helpers.Drivers.Mobile
             }
         }
 
-        private AppiumWebElement FindElement(FindsBy findsBy, string locator)
+        private AppiumElement FindElement(FindsBy findsBy, string locator)
         {
             IWait<IWebDriver> wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(BaseConfiguration.ExplicitTimeout));
 
             try
-            {
-                switch (findsBy)
-                {
-                    case FindsBy.XPath:
-                        return wait.Until(driver => _driver.FindElementByXPath(locator));
-                    case FindsBy.Id:
-                        return wait.Until(driver => _driver.FindElementById(locator));
-                    case FindsBy.AccesibilityId:
-                        return wait.Until(driver => _driver.FindElementByAccessibilityId(locator));
-                    default:
-                        throw new NotSupportedException($"Locator type \"{findsBy}\" not supported");
-                }
+			{
+				By by;
+				switch (findsBy)
+				{
+					case FindsBy.XPath:
+                        by = By.XPath(locator);
+                        break;
+					case FindsBy.Id:
+                        by = By.Id(locator);
+                        break;
+                    case FindsBy.ContentDescription:
+                        by = By.XPath($"//*[@content-desc=\"{locator}\"]");
+                        break;
+					default:
+						throw new NotSupportedException($"Locator type \"{findsBy}\" not supported");
+				}
+                return wait.Until(driver => _driver.FindElement(by));
             }
             catch (WebDriverTimeoutException ex)
             {

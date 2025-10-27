@@ -5,7 +5,7 @@ namespace Helpers.UIElements
 {
     public class TextField : MobileElement, ITextField
     {
-        public TextField(AppiumWebElement element) : base(element) { }
+        public TextField(AppiumElement element) : base(element) { }
 
         public void SetText(string text)
         {

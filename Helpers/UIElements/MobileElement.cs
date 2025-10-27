@@ -4,8 +4,8 @@ namespace Helpers.UIElements
 {
     public class MobileElement
     {
-        public AppiumWebElement Element { get; private set; }
-        protected MobileElement(AppiumWebElement element)
+        public AppiumElement Element { get; private set; }
+        protected MobileElement(AppiumElement element)
         {
             Element = element;
         }

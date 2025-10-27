@@ -7,6 +7,6 @@ namespace MobileViews
     {
         public WelcomeView(IDriverManager driver) : base(driver) { }
 
-        public IButton Skip => (IButton)_driver.GetElement(ElementType.Button, FindsBy.AccesibilityId, "SKIP");
+        public IButton Skip => (IButton)_driver.GetElement(ElementType.Button, FindsBy.ContentDescription, "SKIP");
     }
 }
